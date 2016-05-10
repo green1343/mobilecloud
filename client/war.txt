@@ -1,0 +1,18 @@
+pistol		machinegun	shotgun
+machinegun	sniper		missile
+shotgun		whilwind		missile
+sniper		laser		lightning
+whilwind		blackhole		strafe
+missile		guidedmissile
+
+
+
+pistol
+machinegun shotgun
+sniper whilwind missile
+blackhole guidedmissile laser lightning strafe
+
+
+
+
+ªÛ¡°
