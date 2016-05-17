@@ -210,6 +210,7 @@ public class Weapon {
     public void setPower(float power){m_power = power;}
 
     public int getType(){return m_type;}
+    public int getLevel(){return m_level;}
 
     public void setOverheatMax(float f){
         m_overheatMax = f;

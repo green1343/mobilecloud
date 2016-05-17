@@ -2,8 +2,6 @@ package com.androidtuto.war;
 
 import java.util.ArrayList;
 
-import javax.microedition.khronos.opengles.GL10;
-
 /**
  * Created by 초록 on 2015-05-22.
  */
@@ -179,9 +177,9 @@ public class Number {
         }
     }
 
-    public void draw(GL10 gl, float delta)
+    public void draw(float [] m, float delta)
     {
         for(Unit u : m_units)
-            u.draw(gl, delta);
+            u.draw(m, delta);
     }
 }

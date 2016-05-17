@@ -1,130 +1,155 @@
 package com.androidtuto.war;
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.opengl.GLES20;
 import android.opengl.GLUtils;
-
+import android.opengl.Matrix;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
-import javax.microedition.khronos.opengles.GL10;
+// 유닛
+public class Picture {
+    // 기본적인 이미지 처리를 위한 변수
+    protected static float mVertices[];
+    protected static short mIndices[];
+    protected static float mUvs[];
+    protected static int mProgramImage;
+    protected static int mProgramSolidColor;
+    protected int mPositionHandle;
+    protected int mTexCoordLoc;
+    protected int mtrxhandle;
+    protected int mSamplerLoc;
+    protected int mAlphaLoc;
+    protected FloatBuffer mVertexBuffer;
+    protected ShortBuffer mDrawListBuffer;
+    protected FloatBuffer mUvBuffer;
+    protected FloatBuffer mColorBuffer;
+    // 매트릭스변환을 위한 변수
+    protected final float[] mMVPMatrix = new float[16];
+    protected final float[] mMVPMatrix2 = new float[16];
+    protected float[] mRotationMatrix = new float[16];
+    protected float[] mScaleMatrix = new float[16];
+    protected float[] mTranslationMatrix = new float[16];
 
-public class Picture
-{
-    private FloatBuffer _vertexBuffer;
-    private ShortBuffer _indexBuffer;
-    private FloatBuffer _texBuffer;
-    private int _vertexCount = 0;
-    private boolean _hasTexture = false;
-    private int[] _texture = new int[1];
-    private int _textIndex;
+    // 비트맵 이미지 핸들관리 (여러건 처리를 위해 배열로 정의)
+    protected int[] mHandleBitmap;
+    protected int mBitmapCount = 0;
+    protected Bitmap mBitmap[];
+    // 유닛의 움직임을 관리하는 변수
+    protected int mCount = 0;
+    // 여러개의 이미지 중 화면에 표시할 인덱스번호
+    protected int mBitmapState = 0;
+    // 현재 객체의 활성화 여부
+    protected boolean mIsActive = false;
 
-    public Picture(GL10 gl, Context context, int tex)
+
+    int _texIndex;
+
+    public Picture(Context context, int tex, int programImage, int programSolidColor)
     {
-        float[] coords = new float[]{-1,-1,0,1,-1,0,1,1,0,-1,1,0};
-        float[] tcoords = new float[]{ 0f,1f, 1f,1f, 1f,0f,0f,0f};
-        short[] icoords = new short[]{0,1,2,3,0};
-        int vertexes = 5;
+        mProgramImage = programImage;
+        mProgramSolidColor = programSolidColor;
+        mPositionHandle = GLES20.glGetAttribLocation(mProgramImage, "vPosition");
+        mTexCoordLoc = GLES20.glGetAttribLocation(mProgramImage, "a_texCoord");
+        mAlphaLoc = GLES20.glGetAttribLocation(mProgramImage, "a_alpha");
+        mtrxhandle = GLES20.glGetUniformLocation(mProgramImage, "uMVPMatrix");
+        mSamplerLoc = GLES20.glGetUniformLocation(mProgramImage, "s_texture");
 
-        _vertexCount = vertexes;
-        _vertexBuffer = makeFloatBuffer(coords);
-        _indexBuffer = makeShortBuffer(icoords);
-        _texBuffer = makeFloatBuffer(tcoords);
-
-        loadTexture(gl, context, tex);
+        loadTexture(context, tex);
     }
 
-    public Picture(GL10 gl, Context context, int tex, int x, int y, int width, int height)
-    {
-        float[] coords = new float[]{-1,-1,0,1,-1,0,1,1,0,-1,1,0};
-        float[] tcoords = new float[]{ 0f,1f, 1f,1f, 1f,0f,0f,0f};
-        short[] icoords = new short[]{0,1,2,3,0};
-        int vertexes = 5;
+    public int getTexture(){return _texIndex;}
 
-        _vertexCount = vertexes;
-        _vertexBuffer = makeFloatBuffer(coords);
-        _indexBuffer = makeShortBuffer(icoords);
-        _texBuffer = makeFloatBuffer(tcoords);
-
-        loadTexture(gl, context, tex, x, y, width, height);
-    }
-
-    protected static FloatBuffer makeFloatBuffer(float[] arr) {
-        ByteBuffer bb = ByteBuffer.allocateDirect(arr.length*4);
+    // 이미지 처리를 위한 버퍼를 설정함.
+    public void setupBuffer(){
+        mVertices = new float[] {
+                -1, 1, 0,
+                -1, -1, 0,
+                1, -1, 0,
+                1, 1, 0,
+        };
+        mIndices = new short[] {0, 1, 2, 0, 2, 3};
+        // The order of vertexrendering.
+        ByteBuffer bb = ByteBuffer.allocateDirect(mVertices.length * 4);
         bb.order(ByteOrder.nativeOrder());
-        FloatBuffer fb = bb.asFloatBuffer();
-        fb.put(arr);
-        fb.position(0);
-        return fb;
+        mVertexBuffer = bb.asFloatBuffer();
+        mVertexBuffer.put(mVertices);
+        mVertexBuffer.position(0);
+        ByteBuffer dlb = ByteBuffer.allocateDirect(mIndices.length * 2);
+
+        dlb.order(ByteOrder.nativeOrder());
+        mDrawListBuffer = dlb.asShortBuffer();
+        mDrawListBuffer.put(mIndices);
+        mDrawListBuffer.position(0);
+        mUvs = new float[] {
+                0.0f, 0.0f,
+                0.0f, 1.0f,
+                1.0f, 1.0f,
+                1.0f, 0.0f
+        };
+
+        ByteBuffer bbUvs = ByteBuffer.allocateDirect(mUvs.length * 4);
+        bbUvs.order(ByteOrder.nativeOrder());
+        mUvBuffer = bbUvs.asFloatBuffer();
+        mUvBuffer.put(mUvs);
+        mUvBuffer.position(0);
     }
 
-    protected static ShortBuffer makeShortBuffer(short[] arr) {
-        ByteBuffer bb = ByteBuffer.allocateDirect(arr.length*4);
-        bb.order(ByteOrder.nativeOrder());
-        ShortBuffer ib = bb.asShortBuffer();
-        ib.put(arr);
-        ib.position(0);
-        return ib;
-    }
+    public void loadTexture(Context mContext, int mTex) {
+        _texIndex = mTex;
 
-    public int getTexture(){return _textIndex;}
-
-    public void loadTexture(GL10 gl, Context mContext, int mTex) {
-        _textIndex = mTex;
-        _hasTexture = true;
-        gl.glGenTextures(1, _texture, 0);
-        gl.glBindTexture(GL10.GL_TEXTURE_2D, _texture[0]);
-        Bitmap bitmap;
-        bitmap = BitmapFactory.decodeResource(mContext.getResources(), mTex);
-        GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), mTex);
+        int[] texturenames = new int[1];
+        GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_ONE_MINUS_SRC_ALPHA);
+        GLES20.glGenTextures(1, texturenames, 0);
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texturenames[0]);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
+        GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0);
+        setupBuffer();
+        mHandleBitmap = new int[1];
+        mHandleBitmap[0] = texturenames[0];
         bitmap.recycle();
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_LINEAR );
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR );
     }
 
-    public void loadTexture(GL10 gl, Context mContext, int mTex, int x, int y, int width, int height) {
-        _textIndex = mTex;
-        _hasTexture = true;
-        gl.glGenTextures(1, _texture, 0);
-        gl.glBindTexture(GL10.GL_TEXTURE_2D, _texture[0]);
-        Bitmap bitmap;
-        bitmap = BitmapFactory.decodeResource(mContext.getResources(), mTex);
-        bitmap = Bitmap.createBitmap(bitmap, x*2, y*2, width*2, height*2);
-        GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
-        bitmap.recycle();
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_LINEAR );
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR );
-    }
+    public void draw(float [] m, float x, float y, float z, float rot, float scaleX, float scaleY, float alpha) {
+        Matrix.setIdentityM(mTranslationMatrix, 0);
+        Matrix.setIdentityM(mRotationMatrix, 0);
+        Matrix.setIdentityM(mScaleMatrix, 0);
+        Matrix.translateM(mTranslationMatrix, 0, x, y, z);
+        Matrix.setRotateM(mRotationMatrix, 0, rot, 0, 0, 1.0f);
+        Matrix.scaleM(mScaleMatrix, 0, scaleX, scaleY, 1f);
+        Matrix.multiplyMM(mMVPMatrix, 0, m, 0, mTranslationMatrix, 0);
+        Matrix.multiplyMM(mMVPMatrix2, 0, mMVPMatrix, 0, mRotationMatrix, 0);
+        Matrix.multiplyMM(mMVPMatrix2, 0, mMVPMatrix2, 0, mScaleMatrix, 0);
 
-   public void draw(GL10 gl) {
-            if (_hasTexture) {
-            gl.glEnable(GL10.GL_TEXTURE_2D);
-            gl.glBindTexture(GL10.GL_TEXTURE_2D, _texture[0]);
-                gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, _texBuffer);
-            } else {
-                gl.glDisable(GL10.GL_TEXTURE_2D);
-            }
-            gl.glFrontFace(GL10.GL_CCW);
-            gl.glVertexPointer(3, GL10.GL_FLOAT, 0, _vertexBuffer);
-            gl.glDrawElements(GL10.GL_TRIANGLE_FAN, _vertexCount, GL10.GL_UNSIGNED_SHORT, _indexBuffer);
-            gl.glDisable(GL10.GL_TEXTURE_2D);
-    }
+        GLES20.glEnable(GLES20.GL_TEXTURE_2D);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mHandleBitmap[0]);
+        GLES20.glEnableVertexAttribArray(mPositionHandle);
+        GLES20.glVertexAttribPointer(mPositionHandle, 3, GLES20.GL_FLOAT, false, 0, mVertexBuffer);
+        GLES20.glEnableVertexAttribArray(mTexCoordLoc);
+        GLES20.glVertexAttribPointer(mTexCoordLoc, 2, GLES20.GL_FLOAT, false, 0, mUvBuffer);
+        GLES20.glVertexAttrib1f(mAlphaLoc, alpha);
+        GLES20.glUniformMatrix4fv(mtrxhandle, 1, false, mMVPMatrix2, 0);
+        GLES20.glUniform1i(mSamplerLoc, 0);
+        // 이미지 핸들을 출력한다.
+        GLES20.glDrawElements(GLES20.GL_TRIANGLES, mIndices.length, GLES20.GL_UNSIGNED_SHORT, mDrawListBuffer);
+        GLES20.glDisableVertexAttribArray(mPositionHandle);
+        GLES20.glDisableVertexAttribArray(mTexCoordLoc);
+        /*
+        Matrix.setIdentityM(mTranslationMatrix, 0);
+        Matrix.setIdentityM(mRotationMatrix, 0);
+        Matrix.setIdentityM(mScaleMatrix, 0);
+        Matrix.translateM(mTranslationMatrix, 0, x, y, z);
+        Matrix.setRotateM(mRotationMatrix, 0, rot, 0, 0, -1f);
+        Matrix.scaleM(mScaleMatrix, 0, scaleX, scaleY, 1f);
 
-    public void draw(GL10 gl, float x, float y, float z, float rot, float scale) {
-            this.draw(gl, x, y, z, rot, scale, scale);
-    }
-
-    public void draw(GL10 gl, float x, float y, float z, float rot, float scaleX, float scaleY) {
-            gl.glPushMatrix();
-            gl.glTranslatef(x, y, z);
-            gl.glRotatef(rot, 0f, 0f, 1f);
-            gl.glScalef(scaleX, scaleY, 1f);
-            this.draw(gl);
-            gl.glPopMatrix();
+        this.draw(m);*/
     }
 
 }

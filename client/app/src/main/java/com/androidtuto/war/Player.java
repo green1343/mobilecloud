@@ -37,6 +37,14 @@ public class Player extends Character {
 
     @Override
     public boolean damage(float d){
+
+        if(Manager.INSTANCE.isPVPOn()) {
+            if(this == Game.INSTANCE.getPlayer())
+                d /= 20f;
+            else
+                d = 0f;
+        }
+
         boolean result = super.damage(d);
         Manager.INSTANCE.updateStatus(getHp() / getHpMax(), Game.INSTANCE.getExp() / (float)Game.INSTANCE.getExpMax());
         return result;

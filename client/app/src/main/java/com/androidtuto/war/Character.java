@@ -28,7 +28,7 @@ public class Character extends Unit{
         setSize(radius, radius);
         setCollisionBox(radius * 0.7f, radius * 0.7f);
 
-        animateTwing(radius-0.2f, radius, 0.03f, 0.0003f, 0f);
+        animateTwing(radius-0.2f, radius, 0.05f, 0.0003f, 0f);
         setMaxVelocity(velocity);
         setSpeed(velocity / 200f);
     }
@@ -71,7 +71,7 @@ public class Character extends Unit{
         super.update(delta);
         if(m_hpRecover > 0f) {
             recoverHp(m_hpRecover * delta);
-            if(this instanceof Player)
+            if(Game.INSTANCE.getPlayer() == this)
                 Manager.INSTANCE.updateStatus(getHp() / getHpMax(), Game.INSTANCE.getExp() / (float)Game.INSTANCE.getExpMax());
         }
     }

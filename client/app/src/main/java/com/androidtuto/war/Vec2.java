@@ -88,6 +88,12 @@ public class Vec2 {
         return x > 0f ? -(float)Math.acos(y) : (float)Math.acos(y);
     }
 
+    static final Vec2 getDirection(Vec2 s, Vec2 e){
+        Vec2 d = new Vec2(e.x-s.x, e.y-s.y);
+        d.normalize();
+        return d;
+    }
+
     public void normalize()
     {
         float len = length();

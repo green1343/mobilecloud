@@ -2,8 +2,6 @@ package com.androidtuto.war;
 
 import java.util.ArrayList;
 
-import javax.microedition.khronos.opengles.GL10;
-
 /**
  * Created by 초록 on 2015-04-29.
  */
@@ -208,7 +206,7 @@ public class Unit implements Comparable
             return result;
         }
         else
-            return m_position;
+            return new Vec2(m_position);
     }
 
     public Vec2 getWorldPosition(){
@@ -220,7 +218,7 @@ public class Unit implements Comparable
             return result;
         }
         else
-            return m_position;
+            return new Vec2(m_position);
     }
     public void setPosition(float x, float y)
     {
@@ -228,11 +226,28 @@ public class Unit implements Comparable
     }
     public void setPosition(Vec2 v){m_position = v;}
 
-    public Vec2 getSize(){return m_size;}
-    public void setSize(float x, float y){m_size.x = x; m_size.y = y;}
-    public void setSize(Vec2 v){m_size = v;}
+    public Vec2 getSize(){return new Vec2(m_size);}
+    public void setSize(float x, float y){
+        m_size.x = x; m_size.y = y;
+        setCollisionBox(x, y);
+    }
+    public void setSize(Vec2 v){setSize(v.x, v.y);}
 
-    public Vec2 getCollisionBox(){return m_collisionBox;}
+    public void setLine(float x1, float y1, float x2, float y2, float size)
+    {
+        setPosition((x1+x2)/2f, (y1+y2)/2f);
+
+        float dx = x2-x1;
+        float dy = y2-y1;
+        Vec2 v = new Vec2(dx, dy);
+        v.normalize();
+
+        float size2 = Vec2.sqrt(dx*dx+dy*dy) / 2f;
+        setSize(size, size > size2 ? size : size2);
+        setAngle(v.getAngle());
+    }
+
+    public Vec2 getCollisionBox(){return new Vec2(m_collisionBox);}
     public void setCollisionBox(float x, float y){m_collisionBox.x = x; m_collisionBox.y = y;}
     public void setCollisionBox(Vec2 v){m_collisionBox = v;}
 
@@ -241,6 +256,10 @@ public class Unit implements Comparable
 
     public float getAlpha(){return m_alpha;}
     public void setAlpha(float alpha){m_alpha = alpha;}
+
+    public void clearPicture(){
+        m_pictures.clear();
+    }
 
     public void addPicture(int pic)
     {
@@ -261,6 +280,7 @@ public class Unit implements Comparable
             return m_visible;
     }
     public void setVisible(boolean visible){m_visible = visible;}
+    public void toggleVisible(){m_visible = !m_visible;}
 
     public Unit getParent(){return m_parent;}
     public void setParent(Unit parent){m_parent = parent;}
@@ -296,7 +316,7 @@ public class Unit implements Comparable
     }
     public void setZ(int z){m_z = z;}
 
-    public Vec2 getDirection(){return m_direction;}
+    public Vec2 getDirection(){return new Vec2(m_direction);}
     public void setDirection(Vec2 v){setDirection(v, true);}
     public void setDirection(Vec2 v, boolean normalize){
         m_direction = v;
@@ -304,6 +324,9 @@ public class Unit implements Comparable
             m_direction.normalize();
         if(isSeeForward())
             setAngle(m_direction.getAngle());
+    }
+    public void setDirection(float x, float y){
+        setDirection(new Vec2(x, y));
     }
 
     public float getVelocity(){return m_velocity;}
@@ -581,6 +604,9 @@ public class Unit implements Comparable
 
     public void update(float delta)
     {
+        if(delta > 2000f)
+            return;
+
         // auto tracing for npc, guided missile
         if(m_bTrace)
         {
@@ -632,7 +658,7 @@ public class Unit implements Comparable
         {
             m_aniPictureAccum += m_aniPictureInterval * delta;
             if(m_aniPictureAccum >= 1f){
-                m_aniPictureAccum = 0f;
+                m_aniPictureAccum -= 1f;
                 if(m_aniPictureReverse)
                     --m_aniPictureIndex;
                 else
@@ -669,7 +695,7 @@ public class Unit implements Comparable
         }
 
         if(m_aniPosOn){
-            if(Vec2.checkSquare(m_position, m_aniPosEnd, m_velocity * 1.01f)){
+            if(Vec2.checkSquare(m_position, m_aniPosEnd, m_velocity * 1.1f)){
                 m_position = m_aniPosEnd;
                 setVelocity(0f);
                 m_aniPosOn = false;
@@ -787,30 +813,29 @@ public class Unit implements Comparable
         }
     }
 
-    private void _draw(GL10 gl, float delta, float x, float y, float sx, float sy)
+    private void _draw(float [] m, float delta, float x, float y, float sx, float sy)
     {
-        gl.glColor4f(1f, 1f, 1f, m_alpha);
-        m_pictures.get(m_aniPictureIndex).draw(gl, x, y, 0f, m_angle * (180f / (float) Math.PI), sx, sy);
+        m_pictures.get(m_aniPictureIndex).draw(m, x, y, 0f, m_angle * (180f / (float) Math.PI), sx, sy, m_alpha);
     }
 
-    public void draw(GL10 gl, float delta, float x, float y, float sx, float sy)
+    public void draw(float [] m, float delta, float x, float y, float sx, float sy)
     {
         if(isVisible() == false || m_pictures == null || m_pictures.size() == 0)
             return;
 
-        _draw(gl, delta, x, y, sx, sy);
+        _draw(m, delta, x, y, sx, sy);
     }
 
-    public void draw(GL10 gl, float delta)
+    public void draw(float [] m, float delta)
     {
         if(isVisible() == false || m_pictures == null || m_pictures.size() == 0)
             return;
 
         Vec2 p = getWorldPosition();
-        _draw(gl, delta, p.x, p.y, m_size.x, m_size.y);
+        _draw(m, delta, p.x, p.y, m_size.x, m_size.y);
     }
 
-    public boolean draw(GL10 gl, float delta, Vec3 camera)
+    public boolean draw(float [] m, float delta, Vec3 camera)
     {
         if(isVisible() == false || m_pictures == null || m_pictures.size() == 0)
             return false;
@@ -823,7 +848,7 @@ public class Unit implements Comparable
         float sy = m_size.y * rate;
 
         if(-Manager.MAP_WIDTH <= x + sx && x - sx <= Manager.MAP_WIDTH && -Manager.MAP_HEIGHT <= y + sy && y - sy <= Manager.MAP_WIDTH) {
-            _draw(gl, delta, (p.x - camera.x) * rate, (p.y - camera.y) * rate, m_size.x * rate, m_size.y * rate);
+            _draw(m, delta, (p.x - camera.x) * rate, (p.y - camera.y) * rate, m_size.x * rate, m_size.y * rate);
             return true;
         } else
             return false;

@@ -2,18 +2,20 @@ package com.androidtuto.war;
 
 import android.content.Context;
 
+import com.androidtuto.packet.Packet_Player_Update;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.TreeSet;
-
-import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Created by 초록 on 2015-06-12.
  */
 public enum Game {
     INSTANCE;
+
+    static final int GAME_PVP = -1;
 
     static final float CAMERA_SPEED = 0.1f;
 
@@ -33,6 +35,8 @@ public enum Game {
 
     Player m_player;
     Unit m_bg;
+
+    HashMap<Integer, Player> m_enemyPlayer = new HashMap<Integer, Player>();
 
     int m_map;
     int m_exp;
@@ -66,6 +70,32 @@ public enum Game {
     }
 
     public Player getPlayer(){return m_player;}
+
+    public Player addEnemyPlayer(int id){
+        Player p = createPlayer(id);
+        m_enemyPlayer.put(id, p);
+        return p;
+    }
+
+    public HashMap<Integer, Player> getEnemyPlayerAll(){
+        return m_enemyPlayer;
+    }
+
+    public void clearEnemyPlayer(){
+        m_enemyPlayer.clear();
+    }
+
+    public Player getEnemyPlayer(int id){
+        Player p = m_enemyPlayer.get(id);
+        if(p == null)
+            p = addEnemyPlayer(id);
+
+        return p;
+    }
+
+    public void deleteEnemyPlayer(int id){
+        m_enemyPlayer.remove(id);
+    }
 
     public HashMap<Integer, Character> getCharacters(){return m_characters;}
     public HashMap<Integer, Bullet> getBullets1(){return m_bullets1;}
@@ -171,7 +201,7 @@ public enum Game {
                 coin = new Unit(u.getPosition().x + getRandomFloat(-2.5f, 2.5f), u.getPosition().y + getRandomFloat(-2.5f, 2.5f), 0.4f, 0.4f, 0f, R.drawable.coin, 10);
 
             coin.setZ(4);
-            coin.animatePicture(0.3f, true);
+            coin.animatePicture(0.03f, true);
 
             int index = Manager.INSTANCE.registerUnit(coin);
             m_units.put(index, coin);
@@ -411,7 +441,6 @@ public enum Game {
     public void addNpcGroup(float x, float y){
 
         switch(m_map){
-            default:
             case 1:
                 if(m_bossKilled == false && isCleared() && m_boss == null) {
                     m_boss = addNpc(Npc.SHOOTER, 1, x, y, 2f, 0f, 0f);
@@ -1022,12 +1051,12 @@ public enum Game {
 
     public Unit addFx(float x, float y, float s, int tex, int numTex)
     {
-        return addFx(x, y, s, tex, numTex, 0.1f);
+        return addFx(x, y, s, tex, numTex, 0.05f);
     }
 
     public void killCharacter(Unit u){
 
-        if(u instanceof Player){
+        if(u == getPlayer()){
             Unit white = Manager.INSTANCE.getClearImage();
             white.animateAlpha(1f, 0.001f);
             white.setCallbackAniAlpha(new CallbackAnimation() {
@@ -1037,19 +1066,28 @@ public enum Game {
                     u.setCallbackAniAlpha(null);
                 }
             });
+
+            if(Manager.INSTANCE.isPVPOn()){
+                Manager.INSTANCE.setPVP(false);
+            }
             return;
         }
-        else if(u instanceof Npc) {
+        else if(u instanceof Npc || u instanceof Player) {
 
             int coin = 0;
-            if (m_boss == u) {
-                setBossKilled();
-                coin = 15;
+
+            if(u instanceof Npc) {
+                if (m_boss == u) {
+                    setBossKilled();
+                    coin = 15;
+                } else if (((Npc) u).getType() == Npc.SHOOTER)
+                    coin = 3;
+                else if (getRandomInt(1, 10) <= 8)
+                    coin = 1;
             }
-            else if (((Npc) u).getType() == Npc.SHOOTER)
-                coin = 3;
-            else if (getRandomInt(1, 10) <= 8)
-                coin = 1;
+            else{
+                coin = 20;
+            }
 
             Game.INSTANCE.addFx(u.getPosition().x, u.getPosition().y, u.getSize().x, R.drawable.fx_explosion1, 42);
 
@@ -1126,18 +1164,8 @@ public enum Game {
         m_bg.setPicture(R.drawable.bg_game01);
 
         // create player
-        m_player = new Player(0, 0, 1f, 0.12f);
-        m_player.setHp(100);
-        m_player.setZ(1);
+        m_player = createPlayer(1);
         m_player.setWeaponMain(User.INSTANCE.getWeaponMain(), User.INSTANCE.getWeaponLevel());
-
-        int index = Manager.INSTANCE.registerUnit(m_player);
-        m_player.setTeam(index);
-        m_units.put(index, m_player);
-        m_characters.put(index, m_player);
-        m_drawables.add(m_player);
-
-        m_player.setFxMove(Unit.FX_MOVE_PLAYER);
 
         // initialize player movement info
         m_playerPosPast = new Vec2(0f, 0f);
@@ -1148,6 +1176,23 @@ public enum Game {
         // tutorial
         if(map == 1 && User.INSTANCE.getCoin() == 0){
         }
+    }
+
+    public Player createPlayer(int team){
+        Player p = new Player(0, 0, 1f, 0.12f);
+
+        p.setHp(100);
+        p.setZ(1);
+
+        int index = Manager.INSTANCE.registerUnit(p);
+        p.setTeam(team);
+        m_units.put(index, p);
+        m_characters.put(index, p);
+        m_drawables.add(p);
+
+        p.setFxMove(Unit.FX_MOVE_PLAYER);
+
+        return p;
     }
 
     public void setUpdating(boolean b){
@@ -1164,9 +1209,29 @@ public enum Game {
     private final float MAPMAX_X = Manager.MAP_WIDTH * 39f;
     private final float MAPMAX_Y = Manager.MAP_HEIGHT * 39f;
 
+    private final float INTERVAL_PLAYERUPDATE = 0f;
+    private float m_accumPlayerUpdate = 0f;
+
     public void update(float delta)
     {
         setUpdating(true);
+
+        if(Manager.INSTANCE.isPVPOn()) {
+            m_accumPlayerUpdate += delta;
+            if (m_accumPlayerUpdate > INTERVAL_PLAYERUPDATE) {
+                Packet_Player_Update p = new Packet_Player_Update();
+                Vec2 pos = m_player.getPosition();
+                Vec2 dir = m_player.getDirection();
+                p.px = pos.x;
+                p.py = pos.y;
+                p.dx = dir.x;
+                p.dy = dir.y;
+                p.v = m_player.getVelocity();
+                Network.INSTANCE.write(p);
+
+                m_accumPlayerUpdate = 0f;
+            }
+        }
 
         m_camera.x += (m_player.getPosition().x - m_camera.x) * CAMERA_SPEED;
         m_camera.y += (m_player.getPosition().y - m_camera.y) * CAMERA_SPEED;
@@ -1248,7 +1313,7 @@ public enum Game {
         }
 
         for(Unit u : m_units.values()){
-            if(u == m_player || u == m_boss)
+            if(u instanceof Player || u == m_boss)
                 continue;
 
             if(Math.abs(m_player.getPosition().x - u.getPosition().x) > 20f ||
@@ -1263,21 +1328,20 @@ public enum Game {
         setUpdating(false);
     }
 
-    public void draw(GL10 gl, float delta)
+    public void draw(float [] m, float delta)
     {
-        m_bg.draw(gl, delta, -m_camera.x / 40f, -m_camera.y / 40f, m_bg.getSize().x, m_bg.getSize().y);
+        m_bg.draw(m, delta, -m_camera.x / 40f, -m_camera.y / 40f, m_bg.getSize().x, m_bg.getSize().y);
 
 
         for(Unit u : m_drawables){
-            boolean result = u.draw(gl, delta, m_camera);
+            boolean result = u.draw(m, delta, m_camera);
 
             //if(result == false && u instanceof Npc){
-            if(result == false && u == m_boss){
+            if(result == false && (u == m_boss || (u instanceof Player && u != m_player))){
                 final float SPACE = 1f;
 
-                Npc n = (Npc)u;
-                float x = n.getPosition().x;
-                float y = n.getPosition().y;
+                float x = u.getPosition().x;
+                float y = u.getPosition().y;
                 int xpos = 0;
                 int ypos = 0;
                 float angle = 0f;
@@ -1314,12 +1378,12 @@ public enum Game {
                         size = 0.3f;*/
                     float size = 1f;
 
-                    int picture = 0;
-                    if (n.getType() == Npc.ZOMBIE) picture = R.drawable.arrow_zombie;
+                    int picture = R.drawable.arrow_shooter;
+                    /*if (n.getType() == Npc.ZOMBIE) picture = R.drawable.arrow_zombie;
                     else if (n.getType() == Npc.BOMBER) picture = R.drawable.arrow_bomber;
-                    else if (n.getType() == Npc.SHOOTER) picture = R.drawable.arrow_shooter;
+                    else if (n.getType() == Npc.SHOOTER) picture = R.drawable.arrow_shooter;*/
                     Unit arrow = new Unit(x, y, size, size, angle, picture);
-                    arrow.draw(gl, delta, m_camera);
+                    arrow.draw(m, delta, m_camera);
                 }
             }
         }
@@ -1327,7 +1391,7 @@ public enum Game {
 
     public void playerFire(float x, float y)
     {
-        if(m_player.getWeaponMain().isAssisted()) {
+        if(Manager.INSTANCE.isPVPOn() == false && m_player.getWeaponMain().isAssisted()) {
             Vec2 dir1 = new Vec2(x, y);
             dir1.normalize();
 

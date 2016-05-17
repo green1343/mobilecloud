@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -24,7 +23,7 @@ import com.google.ads.AdView;
 
 public class MyActivity extends Activity implements IabBroadcastReceiver.IabBroadcastListener {
 
-    private GLSurfaceView _surfaceView;
+    private MainGLSurfaceView mGLSurfaceView;
     protected AdView adView;
 
     static public float m_resolution;
@@ -38,17 +37,22 @@ public class MyActivity extends Activity implements IabBroadcastReceiver.IabBroa
         m_resolution = (float)dm.heightPixels / (float)dm.widthPixels;
 
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_demo);
-        _surfaceView = new ClearGLSurfaceView(this);
+
+        // 서피스뷰 생성을 위한 매트릭스
+        int height = dm.heightPixels;
+        int width = dm.widthPixels;
+        mGLSurfaceView = new MainGLSurfaceView(this, width, height);
+
+
         checkNetwork();
 
-        //setContentView(_surfaceView);
+        //setContentView(mGLSurfaceView);
 
         User.INSTANCE.init(this);
 
         // Create AdMob LayOut
         RelativeLayout layout = new RelativeLayout(this);
-        layout.addView(_surfaceView);
+        layout.addView(mGLSurfaceView);
         setContentView(layout);
 
         if(User.INSTANCE.getAd() == false) {
@@ -149,22 +153,22 @@ public class MyActivity extends Activity implements IabBroadcastReceiver.IabBroa
     protected void onPause() {
         super.onPause();
         Manager.INSTANCE.setPause(true);
-        _surfaceView.onPause();
+        mGLSurfaceView.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Manager.INSTANCE.setPause(false);
-        _surfaceView.onResume();
+        mGLSurfaceView.onResume();
     }
 
     private void checkNetwork(){
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo_3G = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         NetworkInfo networkInfo_wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if(networkInfo_3G.isConnectedOrConnecting() || networkInfo_wifi.isConnectedOrConnecting()){
 
+        if(networkInfo_3G.isConnectedOrConnecting() || networkInfo_wifi.isConnectedOrConnecting()){
         }else{
             AlertDialog dialog = createDialogBox();
             dialog.show();

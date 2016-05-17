@@ -4,13 +4,17 @@ package com.androidtuto.war;
 import android.content.Context;
 import android.view.MotionEvent;
 
+import com.androidtuto.packet.Packet_PVP_Off;
+import com.androidtuto.packet.Packet_PVP_On;
+import com.androidtuto.packet.Packet_Player_Fire_Off;
+import com.androidtuto.packet.Packet_Player_Fire_On;
+import com.androidtuto.packet.Packet_Player_Weapon;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.TreeSet;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public enum Manager
 {
@@ -45,8 +49,10 @@ public enum Manager
 
     Unit m_uiMenuItem;
     Unit m_uiMenuMap;
+    Unit m_uiMenuPVP;
     Unit m_uiMenuMapHightlight;
     Unit m_uiMenuItemHightlight;
+    Unit m_uiMenuPVPHightlight;
     Unit m_uiMain;
     Unit m_uiItem;
     Unit m_uiMap;
@@ -105,13 +111,12 @@ public enum Manager
             });
      */
 
-    public void init(Context context, float mapWidth, float mapHeight, float surfWidth, float surfHeight, Advertise ad)
+    public void init(Context context, float mapWidth, float mapHeight, Advertise ad)
     {
         m_context = context;
+
         MAP_WIDTH = mapWidth;
         MAP_HEIGHT = mapHeight;
-        m_surfWidth = surfWidth;
-        m_surfHeight = surfHeight;
 
         m_ad = ad;
 
@@ -130,6 +135,7 @@ public enum Manager
         m_numbers = new ArrayList<Number>();
 
         Game.INSTANCE.init(m_context, m_random);
+        Network.INSTANCE.init();
 
         createCommonUI();
     }
@@ -353,7 +359,8 @@ public enum Manager
         m_stageClear = addBox(0f, 3f, 5f, 0.7f, 0f, BOX_IMAGE, R.drawable.ui_stageclear);
         m_stageClear.setAlpha(0f);
 
-        m_uiMenuItem = addBox(MAP_WIDTH - 0.6f, MAP_HEIGHT - 1.8f, 0.6f, 1.8f, BOX_BUTTON, R.drawable.ui_menu_item);
+        m_uiMenuItem = addBox(MAP_WIDTH - 0.6f, MAP_HEIGHT - 1.2f, 0.6f, 1.2f, BOX_BUTTON, R.drawable.ui_menu_item);
+        m_uiMenuItem.setZ(1);
         m_uiMenuItem.setCallbackMenu(new CallbackMenu() {
             public void menuButton(Unit u) {
                 Manager.INSTANCE.m_uiItem.setVisible(true);
@@ -364,7 +371,8 @@ public enum Manager
                 Manager.INSTANCE.highlightItem(false);
             }
         });
-        m_uiMenuMap = addBox(MAP_WIDTH - 0.6f, MAP_HEIGHT - 5.4f, 0.6f, 1.8f, BOX_BUTTON, R.drawable.ui_menu_map);
+        m_uiMenuMap = addBox(MAP_WIDTH - 0.6f, MAP_HEIGHT - 3.6f, 0.6f, 1.2f, BOX_BUTTON, R.drawable.ui_menu_map);
+        m_uiMenuMap.setZ(1);
         m_uiMenuMap.setCallbackMenu(new CallbackMenu() {
             public void menuButton(Unit u) {
                 Manager.INSTANCE.m_uiItem.setVisible(false);
@@ -375,23 +383,32 @@ public enum Manager
 
                 // update
                 int max = User.INSTANCE.getMapMax();
-                if(max > 39)
+                if (max > 39)
                     max = 39;
 
-                for(int i=0; i<=max; ++i)
+                for (int i = 0; i <= max; ++i)
                     m_uiMapButtons.get(i).setPicture(R.drawable.ui_map_button);
 
-                for(int i=max + 1; i<40; ++i)
+                for (int i = max + 1; i < 40; ++i)
                     m_uiMapButtons.get(i).setPicture(R.drawable.ui_map_button_black);
 
-                m_uiMapButtons.get(Game.INSTANCE.getMap()-1).setPicture(R.drawable.ui_map_button_current);
+                m_uiMapButtons.get(Game.INSTANCE.getMap() - 1).setPicture(R.drawable.ui_map_button_current);
             }
         });
-        m_uiMenuMapHightlight = addBox(m_uiMenuMap, 0f, 0f, m_uiMenuMap.getSize().x, m_uiMenuMap.getSize().y, BOX_IMAGE, R.drawable.ui_menu_map_hightlight);
-        m_uiMenuMapHightlight.setAlpha(0f);
+        m_uiMenuPVP = addBox(MAP_WIDTH - 0.6f, MAP_HEIGHT - 6.0f, 0.6f, 1.2f, BOX_BUTTON, R.drawable.ui_menu_pvp);
+        m_uiMenuPVP.setZ(1);
+        m_uiMenuPVP.setCallbackMenu(new CallbackMenu() {
+            public void menuButton(Unit u) {
+                setPVP(!isPVPOn());
+            }
+        });
 
-        m_uiMenuItemHightlight = addBox(m_uiMenuItem, 0f, 0f, m_uiMenuItem.getSize().x, m_uiMenuItem.getSize().y, BOX_IMAGE, R.drawable.ui_menu_item_hightlight);
+        m_uiMenuMapHightlight = addBox(m_uiMenuMap, 0f, 0f, m_uiMenuMap.getSize().x, m_uiMenuMap.getSize().y, BOX_IMAGE, R.drawable.ui_menu_map_highlight);
+        m_uiMenuMapHightlight.setAlpha(0f);
+        m_uiMenuItemHightlight = addBox(m_uiMenuItem, 0f, 0f, m_uiMenuItem.getSize().x, m_uiMenuItem.getSize().y, BOX_IMAGE, R.drawable.ui_menu_item_highlight);
         m_uiMenuItemHightlight.setAlpha(0f);
+        m_uiMenuPVPHightlight = addBox(m_uiMenuPVP, 0f, 0f, m_uiMenuItem.getSize().x, m_uiMenuItem.getSize().y, BOX_IMAGE, R.drawable.ui_menu_pvp_highlight);
+        m_uiMenuPVPHightlight.setVisible(false);
 
         final float WIDTH_MAIN = 10f;
         final float HEIGHT_MAIN = 5.87f;
@@ -540,6 +557,7 @@ public enum Manager
                         public void menuButton(Unit u) {
                             if (u.getUserData() <= User.INSTANCE.getMapMax() + 1) {
                                 Game.INSTANCE.createMap(u.getUserData());
+                                Manager.INSTANCE.m_uiMenuPVPHightlight.setVisible(false);
                                 Manager.INSTANCE.hideUI();
                                 if (/*User.INSTANCE.getAd() == false && */Manager.INSTANCE.getRandomInt(1, 5) <= 1)
                                     Manager.INSTANCE.showAd();
@@ -566,6 +584,35 @@ public enum Manager
         u.setZ(1);
     }
 
+    public boolean isPVPOn(){
+        return m_uiMenuPVPHightlight.isVisible();
+    }
+
+    public void setPVP(boolean on) {
+
+        if (on) {
+            Packet_PVP_On p1 = new Packet_PVP_On();
+            p1.id = Network.INSTANCE.getID();
+            Network.INSTANCE.write(p1);
+
+            Packet_Player_Weapon p2 = new Packet_Player_Weapon();
+            p2.id = Network.INSTANCE.getID();
+            p2.weapon = Game.INSTANCE.getPlayer().getWeaponMain().getType();
+            p2.level = Game.INSTANCE.getPlayer().getWeaponMain().getLevel();
+            Network.INSTANCE.write(p2);
+
+            Game.INSTANCE.createMap(Game.GAME_PVP);
+        } else {
+            Manager.INSTANCE.m_uiMenuPVPHightlight.setVisible(false);
+
+            Packet_PVP_Off p = new Packet_PVP_Off();
+            p.id = Network.INSTANCE.getID();
+            Network.INSTANCE.write(p);
+
+            Game.INSTANCE.createMap(User.INSTANCE.getMapMax() + 1);
+        }
+    }
+
     int m_mapPage = 0;
 
     public void setMapPage(int page){
@@ -588,6 +635,7 @@ public enum Manager
         m_uiMain.setCallbackAniPos(null);
         m_uiMenuItem.animatePos(new Vec2(MAP_WIDTH - m_uiMain.getSize().x * 2f - m_uiMenuItem.getSize().x, m_uiMenuItem.getPosition().y), new Vec2(-1f, 0f), UI_ANIMATION_SPEED);
         m_uiMenuMap.animatePos(new Vec2(MAP_WIDTH - m_uiMain.getSize().x * 2f - m_uiMenuMap.getSize().x, m_uiMenuMap.getPosition().y), new Vec2(-1f, 0f), UI_ANIMATION_SPEED);
+        m_uiMenuPVP.animatePos(new Vec2(MAP_WIDTH - m_uiMain.getSize().x * 2f - m_uiMenuPVP.getSize().x, m_uiMenuPVP.getPosition().y), new Vec2(-1f, 0f), UI_ANIMATION_SPEED);
     }
 
     public boolean isMainVisible(){
@@ -606,6 +654,7 @@ public enum Manager
         });
         m_uiMenuItem.animatePos(new Vec2(MAP_WIDTH - m_uiMenuItem.getSize().x, m_uiMenuItem.getPosition().y), new Vec2(1f, 0f), UI_ANIMATION_SPEED);
         m_uiMenuMap.animatePos(new Vec2(MAP_WIDTH - m_uiMenuMap.getSize().x, m_uiMenuMap.getPosition().y), new Vec2(1f, 0f), UI_ANIMATION_SPEED);
+        m_uiMenuPVP.animatePos(new Vec2(MAP_WIDTH - m_uiMenuPVP.getSize().x, m_uiMenuPVP.getPosition().y), new Vec2(1f, 0f), UI_ANIMATION_SPEED);
     }
 
     public void showAd(){
@@ -829,12 +878,12 @@ public enum Manager
         setUpdating(false);
     }
 
-    public void draw(GL10 gl, float delta)
+    public void draw(float [] m, float delta)
     {
-        Game.INSTANCE.draw(gl, delta);
+        Game.INSTANCE.draw(m, delta);
 
         for(Unit u : m_drawables)
-            u.draw(gl, delta);
+            u.draw(m, delta);
     }
 
     public void touchPadMoveOn(float x, float y)
@@ -866,16 +915,21 @@ public enum Manager
 
     public void touchPadFireOn(float x, float y)
     {
+        m_fxPadFire.setPosition(x, y);
+        x -= m_padFire.getPosition().x;
+        y -= m_padFire.getPosition().y;
+
+        Game.INSTANCE.playerFire(x, y);
+
+        Packet_Player_Fire_On p = new Packet_Player_Fire_On();
+        p.id = Network.INSTANCE.getID();
+        p.x = x;
+        p.y = y;
+        Network.INSTANCE.write(p);
+
         if (m_padFire.getToggle() == false){
-            Game.INSTANCE.playerFire(x-m_padFire.getPosition().x, y-m_padFire.getPosition().y);
             m_padFire.setToggle(true);
-            m_fxPadFire.setPosition(x, y);
             m_fxPadFire.setVisible(true);
-        }
-        else
-        {
-            Game.INSTANCE.playerFire(x - m_padFire.getPosition().x, y - m_padFire.getPosition().y);
-            m_fxPadFire.setPosition(x, y);
         }
     }
 
@@ -884,6 +938,10 @@ public enum Manager
             Game.INSTANCE.getPlayer().getWeaponMain().touchUp();
             m_padFire.setToggle(false);
             m_fxPadFire.setVisible(false);
+
+            Packet_Player_Fire_Off p = new Packet_Player_Fire_Off();
+            p.id = Network.INSTANCE.getID();
+            Network.INSTANCE.write(p);
         }
     }
 
@@ -907,7 +965,7 @@ public enum Manager
 
                 boolean check = false;
 
-                Iterator<Unit> it = m_drawables.descendingIterator();
+                Iterator<Unit> it = m_buttons.descendingIterator();
                 while(it.hasNext()){
                     Unit button = it.next();
                     if(/*button.getCallbackMenu() == null || */button.isVisible() == false)

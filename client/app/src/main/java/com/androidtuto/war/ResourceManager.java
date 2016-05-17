@@ -20,7 +20,9 @@ public enum ResourceManager
     private SoundPool m_soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
     private HashMap<Integer, Integer> m_sounds = new HashMap<Integer, Integer>();
 
-    void addPicture(GL10 gl, Context context, int tex){ m_pictures.put(tex, new Picture(gl, context, tex));}
+    void addPicture(Context context, int tex, int programImage, int programSolidColor){
+        m_pictures.put(tex, new Picture(context, tex, programImage, programSolidColor));
+    }
     /*void addPicture(GL10 gl, Context context, int tex, int x, int y, int width, int height){
         for(int yy=0; yy<y; ++yy) {
             for (int xx = 0; xx < x; ++xx)

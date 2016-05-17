@@ -3,4 +3,4 @@
         android:title="@string/menu_settings"
         android:orderInCategory="100" />
 </menu>
-<!-- From: file:/C:/Users/sheep_000/Dropbox/Int/war/app/src/main/res/menu/activity_demo.xml -->
+<!-- From: file:/C:/war/app/src/main/res/menu/activity_demo.xml -->

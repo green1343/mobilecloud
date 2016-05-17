@@ -35,10 +35,10 @@ public enum User {
         readUserData();
 
         // debug
-        /*m_coin = 87000;
+        m_coin = 87000;
         for(int i=0; i<11; ++i)
-            m_weaponLevel[i] = 4;
-        m_mapMax = 30;*/
+            m_weaponLevel[i] = 3;
+        m_mapMax = 30;
     }
 
     public void readUserData()
