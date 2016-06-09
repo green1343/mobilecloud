@@ -1,0 +1,850 @@
+[
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_10.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_10.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_tutorial.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_tutorial.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num5.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num5.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_24.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_24.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber13.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber13.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_shop.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_shop.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie08.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie08.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_41.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_41.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter01.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter01.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber11.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber11.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_lightning3.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_lightning3.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_09.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_09.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_shotgun.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_shotgun.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_circle_red.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_circle_red.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_03.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_03.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_button2.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_button2.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter20.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter20.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_shop_gold1.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_shop_gold1.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter15.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter15.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_image.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_image.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_circle_orange.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_circle_orange.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_04.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_04.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_hp_back.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_hp_back.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_38.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_38.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_sniper.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_sniper.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_machinegun.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_machinegun.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_19.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_19.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_07.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_07.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_shop_ad.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_shop_ad.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_shop_gold3.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_shop_gold3.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie13.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie13.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_14.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_14.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter13.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter13.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num7.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num7.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_button_current.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_button_current.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber15.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber15.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num1.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num1.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter19.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter19.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\zzz.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\zzz.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_36.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_36.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_06.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_06.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_26.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_26.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber08.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber08.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_menu_map_highlight.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_menu_map_highlight.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_07.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_07.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie06.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie06.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_10.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_10.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_lightning1.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_lightning1.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter03.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter03.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_20.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_20.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_13.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_13.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_02.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_02.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie17.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie17.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_32.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_32.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_menu_item_highlight.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_menu_item_highlight.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie16.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie16.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber20.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber20.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_highlight.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_highlight.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_whirlwind.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_whirlwind.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie02.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie02.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_game01.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bg_game01.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_17.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_17.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_fog_player.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_fog_player.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_laser.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_laser.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_close.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_close.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\arrow_bomber.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\arrow_bomber.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_level_on.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_level_on.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_lightning6.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_lightning6.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie18.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie18.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_hp.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_hp.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_menu_pvp_highlight.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_menu_pvp_highlight.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie01.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie01.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_left.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_left.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_09.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_09.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_03.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_03.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie20.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie20.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_15.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_15.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_strafe.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_strafe.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber06.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber06.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber17.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber17.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber07.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber07.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_27.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_27.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter05.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter05.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_21.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_21.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_22.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_22.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_lightning5.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_lightning5.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber16.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber16.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_main.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_main.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_touch.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_touch.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber01.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber01.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_28.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_28.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_31.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_31.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num0.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num0.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num6.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num6.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_sniperrifle.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_sniperrifle.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_14.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_14.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_37.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_37.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_default.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_default.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_02.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_02.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_guidedmissile_main.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_guidedmissile_main.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_08.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_08.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_missile.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_missile.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber10.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber10.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_lightning.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_lightning.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_18.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_18.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_right.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_right.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter14.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter14.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\black.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\black.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie11.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie11.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber4.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber4.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_missile.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_missile.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_12.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_12.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_button_boss.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_button_boss.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter02.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter02.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber5.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber5.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_04.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_04.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_08.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_08.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_25.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_25.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter16.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter16.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_lightning2.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_lightning2.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_05.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_05.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie10.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie10.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_39.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_39.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_menu_pvp.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_menu_pvp.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_stageclear.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_stageclear.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber12.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber12.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num4.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num4.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_button1.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_button1.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie07.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie07.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter18.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter18.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter04.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter04.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pad.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\pad.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber14.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber14.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_06.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_06.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie12.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie12.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_06.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_06.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_11.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_11.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_40.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_40.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\arrow_zombie.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\arrow_zombie.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber09.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber09.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_07.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_07.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_laser.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_laser.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_13.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_13.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_35.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_35.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num2.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num2.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_button.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_button.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie19.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie19.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num8.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num8.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_menu_item.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_menu_item.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_30.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_30.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_coin.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_coin.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_10.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_10.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_menu_map.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_menu_map.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_03.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_03.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_coin.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_coin.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_42.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_42.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_09.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_09.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_29.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_29.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_map_button_black.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_map_button_black.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_highlight.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_highlight.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber05.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber05.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter06.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter06.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie09.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie09.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber02.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber02.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter09.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter09.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_lightning4.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_lightning4.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_23.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_23.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie03.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie03.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_04.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_04.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_strafe.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_strafe.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_blackhole.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_blackhole.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber18.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber18.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_exp.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_exp.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_16.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_16.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter10.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter10.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber19.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber19.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_button2_max.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_button2_max.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter08.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter08.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_33.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_33.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber04.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber04.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\white.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\white.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie04.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie04.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_launcher.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber03.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_bomber03.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter12.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter12.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie15.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie15.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter07.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter07.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_12.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_12.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\arrow_shooter.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\arrow_shooter.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_blackhole.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_blackhole.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bullet_missile_red.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\bullet_missile_red.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie14.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie14.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_05.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_05.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weapon_main_whirlwind.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\weapon_main_whirlwind.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_08.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_08.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_zombie05.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_zombie05.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_02.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_02.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_item_level_off.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_item_level_off.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_shop_gold2.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_shop_gold2.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num3.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num3.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_34.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_34.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion2_11.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion2_11.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_shop_back.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_shop_back.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coin_05.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\coin_05.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_15.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_15.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter17.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter17.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num9.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num9.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_shooter11.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\npc_shooter11.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_hit.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_hit.png"
+    }
+]

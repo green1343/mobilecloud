@@ -2,6 +2,7 @@
 package com.androidtuto.war;
 
 import android.content.Context;
+import android.media.MediaRouter;
 import android.view.MotionEvent;
 
 import com.androidtuto.packet.Packet_PVP_Off;
@@ -392,7 +393,9 @@ public enum Manager
                 for (int i = max + 1; i < 40; ++i)
                     m_uiMapButtons.get(i).setPicture(R.drawable.ui_map_button_black);
 
-                m_uiMapButtons.get(Game.INSTANCE.getMap() - 1).setPicture(R.drawable.ui_map_button_current);
+                try {
+                    m_uiMapButtons.get(Game.INSTANCE.getMap() - 1).setPicture(R.drawable.ui_map_button_current);
+                } catch(Exception e){}
             }
         });
         m_uiMenuPVP = addBox(MAP_WIDTH - 0.6f, MAP_HEIGHT - 6.0f, 0.6f, 1.2f, BOX_BUTTON, R.drawable.ui_menu_pvp);
@@ -485,8 +488,15 @@ public enum Manager
                 item.setUserData(cnt);
                 item.setCallbackMenu(new CallbackMenu() {
                     public void menuButton(Unit u) {
-                        if (User.INSTANCE.setWeaponMain(u.getUserData()))
+                        if (User.INSTANCE.setWeaponMain(u.getUserData())) {
                             Manager.INSTANCE.updateItem();
+
+                            Packet_Player_Weapon p = new Packet_Player_Weapon();
+                            p.id = Network.INSTANCE.getID();
+                            p.weapon = User.INSTANCE.getWeaponMain();
+                            p.level = User.INSTANCE.getWeaponLevel();
+                            Network.INSTANCE.write(p);
+                        }
                     }
                 });
                 m_uiItemButtons1.add(item);
@@ -502,8 +512,15 @@ public enum Manager
                 button.setCallbackMenu(new CallbackMenu(){
                     public void menuButton(Unit u) {
                         if(User.INSTANCE.buy(u.getUserData())) {
-                            User.INSTANCE.setWeaponMain(u.getUserData());
-                            Manager.INSTANCE.updateItem();
+                            if(User.INSTANCE.setWeaponMain(u.getUserData())) {
+                                Manager.INSTANCE.updateItem();
+
+                                Packet_Player_Weapon p = new Packet_Player_Weapon();
+                                p.id = Network.INSTANCE.getID();
+                                p.weapon = User.INSTANCE.getWeaponMain();
+                                p.level = User.INSTANCE.getWeaponLevel();
+                                Network.INSTANCE.write(p);
+                            }
                         }
                     }
                 });
@@ -591,6 +608,8 @@ public enum Manager
     public void setPVP(boolean on) {
 
         if (on) {
+            Manager.INSTANCE.m_uiMenuPVPHightlight.setVisible(true);
+
             Packet_PVP_On p1 = new Packet_PVP_On();
             p1.id = Network.INSTANCE.getID();
             Network.INSTANCE.write(p1);
@@ -868,12 +887,14 @@ public enum Manager
 
         setUpdating(true);
 
-        for(Unit u : m_units.values())
-            u.update(delta);
-        //for(int i=0; i<m_numbers.size(); ++i)
-        //    m_numbers.get(i).update(delta);
+        try {
+            for (Unit u : m_units.values())
+                u.update(delta);
+            //for(int i=0; i<m_numbers.size(); ++i)
+            //    m_numbers.get(i).update(delta);
 
-        Game.INSTANCE.update(delta);
+            Game.INSTANCE.update(delta);
+        }catch(Exception e){}
 
         setUpdating(false);
     }

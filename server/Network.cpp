@@ -163,10 +163,15 @@ unsigned WINAPI Network::HandleClnt(void * arg)
 			u->v = p.v;
 
 			Room * r = u->room;
-			if (r->minX > p.px) r->minX = p.px;
+			/*if (r->minX > p.px) r->minX = p.px;
 			if (r->minY > p.py) r->minY = p.py;
 			if (r->maxX < p.px) r->maxX = p.px;
-			if (r->maxY < p.py) r->maxY = p.py;
+			if (r->maxY < p.py) r->maxY = p.py;*/
+
+			r->minX = p.px;
+			r->minY = p.py;
+			r->maxX = p.px;
+			r->maxY = p.py;
 
 			Network::get()->writeRoom(&p, p.id, false);
 

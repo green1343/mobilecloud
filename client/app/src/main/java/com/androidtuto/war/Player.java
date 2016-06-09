@@ -40,7 +40,7 @@ public class Player extends Character {
 
         if(Manager.INSTANCE.isPVPOn()) {
             if(this == Game.INSTANCE.getPlayer())
-                d /= 20f;
+                d /= 10f;
             else
                 d = 0f;
         }

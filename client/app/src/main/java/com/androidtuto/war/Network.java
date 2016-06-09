@@ -19,7 +19,7 @@ public enum Network {
 
     public static final int BUF_SIZE = 256;
 
-    //final String SERVER = "192.168.3.71";
+    //final String SERVER = "192.168.0.9";
     final String SERVER = "54.186.195.189";
 
     final int PORT = 13431;

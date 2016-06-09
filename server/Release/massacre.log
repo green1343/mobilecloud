@@ -1,0 +1,28 @@
+﻿빌드 시작: 2016-04-02 오후 9:22:55
+     1>2 노드의 "c:\massacre\massacre.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\massacre.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt RoomManager.cpp
+         RoomManager.cpp
+     1>RoomManager.cpp(1): warning C4627: '#include <cstdlib>': 미리 컴파일된 헤더 사용을 찾을 때 건너뛰었습니다.
+                 'stdafx.h'에 지시문 추가 또는 미리 컴파일된 헤더 다시 빌드
+     1>RoomManager.cpp(2): warning C4627: '#include <fstream>': 미리 컴파일된 헤더 사용을 찾을 때 건너뛰었습니다.
+                 'stdafx.h'에 지시문 추가 또는 미리 컴파일된 헤더 다시 빌드
+     1>c:\massacre\Packet.h(375): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\massacre\Packet.h(424): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>RoomManager.cpp(18): warning C4305: '=' : 'int'에서 'float'(으)로 잘립니다.
+     1>RoomManager.cpp(19): warning C4305: '=' : 'int'에서 'float'(으)로 잘립니다.
+       Link:
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\massacre\Release\massacre.exe" /INCREMENTAL:NO /NOLOGO ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\massacre\Release\massacre.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\massacre\Release\massacre.lib" /MACHINE:X86 /SAFESEH Release\massacre.res
+         Release\massacre.obj
+         Release\Network.obj
+         Release\Packet.obj
+         Release\RoomManager.obj
+         Release\stdafx.obj
+         코드를 생성하고 있습니다.
+         코드를 생성했습니다.
+         massacre.vcxproj -> c:\massacre\Release\massacre.exe
+     1>"c:\massacre\massacre.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:02.26

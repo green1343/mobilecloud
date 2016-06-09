@@ -3,4 +3,3 @@
         android:title="@string/menu_settings"
         android:orderInCategory="100" />
 </menu>
-<!-- From: file:/C:/war/app/src/main/res/menu/activity_demo.xml -->

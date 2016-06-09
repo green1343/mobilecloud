@@ -94,6 +94,7 @@ public enum Game {
     }
 
     public void deleteEnemyPlayer(int id){
+        killCharacter(m_enemyPlayer.get(id));
         m_enemyPlayer.remove(id);
     }
 
@@ -1057,19 +1058,30 @@ public enum Game {
     public void killCharacter(Unit u){
 
         if(u == getPlayer()){
-            Unit white = Manager.INSTANCE.getClearImage();
-            white.animateAlpha(1f, 0.001f);
-            white.setCallbackAniAlpha(new CallbackAnimation() {
-                public void animationEnd(Unit u) {
-                    Game.INSTANCE.createMap(Game.INSTANCE.getMap());
-                    u.animateAlpha(0f, -0.001f);
-                    u.setCallbackAniAlpha(null);
-                }
-            });
-
             if(Manager.INSTANCE.isPVPOn()){
                 Manager.INSTANCE.setPVP(false);
+                Unit white = Manager.INSTANCE.getClearImage();
+                white.animateAlpha(1f, 0.001f);
+                white.setCallbackAniAlpha(new CallbackAnimation() {
+                    public void animationEnd(Unit u) {
+                        Manager.INSTANCE.setPVP(true);
+                        u.animateAlpha(0f, -0.001f);
+                        u.setCallbackAniAlpha(null);
+                    }
+                });
             }
+            else {
+                Unit white = Manager.INSTANCE.getClearImage();
+                white.animateAlpha(1f, 0.001f);
+                white.setCallbackAniAlpha(new CallbackAnimation() {
+                    public void animationEnd(Unit u) {
+                        Game.INSTANCE.createMap(Game.INSTANCE.getMap());
+                        u.animateAlpha(0f, -0.001f);
+                        u.setCallbackAniAlpha(null);
+                    }
+                });
+            }
+
             return;
         }
         else if(u instanceof Npc || u instanceof Player) {
@@ -1097,6 +1109,7 @@ public enum Game {
             ++m_exp;
             if (m_exp > getExpMax())
                 m_exp = getExpMax();
+
             Manager.INSTANCE.updateStatus(m_player.getHp() / m_player.getHpMax(), m_exp / (float) getExpMax());
         }
 
@@ -1118,6 +1131,7 @@ public enum Game {
             m_bullets1.remove(u.getIndex());
             m_bullets2.remove(u.getIndex());
             m_drawables.remove(u);
+            m_enemyPlayer.remove(u);
 
             boolean b1 = m_coins.isEmpty();
             m_coins.remove(u.getIndex());
@@ -1216,113 +1230,113 @@ public enum Game {
     {
         setUpdating(true);
 
-        if(Manager.INSTANCE.isPVPOn()) {
-            m_accumPlayerUpdate += delta;
-            if (m_accumPlayerUpdate > INTERVAL_PLAYERUPDATE) {
-                Packet_Player_Update p = new Packet_Player_Update();
-                Vec2 pos = m_player.getPosition();
-                Vec2 dir = m_player.getDirection();
-                p.px = pos.x;
-                p.py = pos.y;
-                p.dx = dir.x;
-                p.dy = dir.y;
-                p.v = m_player.getVelocity();
-                Network.INSTANCE.write(p);
+        try {
+            if (Manager.INSTANCE.isPVPOn()) {
+                m_accumPlayerUpdate += delta;
+                if (m_accumPlayerUpdate > INTERVAL_PLAYERUPDATE) {
+                    Packet_Player_Update p = new Packet_Player_Update();
+                    Vec2 pos = m_player.getPosition();
+                    Vec2 dir = m_player.getDirection();
+                    p.px = pos.x;
+                    p.py = pos.y;
+                    p.dx = dir.x;
+                    p.dy = dir.y;
+                    p.v = m_player.getVelocity();
+                    Network.INSTANCE.write(p);
 
-                m_accumPlayerUpdate = 0f;
-            }
-        }
-
-        m_camera.x += (m_player.getPosition().x - m_camera.x) * CAMERA_SPEED;
-        m_camera.y += (m_player.getPosition().y - m_camera.y) * CAMERA_SPEED;
-
-        if(Math.abs(m_camera.x) >= MAPMAX_X || Math.abs(m_camera.y) >= MAPMAX_Y){
-            for(Unit u : m_units.values())
-            {
-                Vec2 p = new Vec2(u.getPosition());
-                p.x -= m_camera.x;
-                p.y -= m_camera.y;
-                u.setPosition(p);
-            }
-            m_camera.x = 0f;
-            m_camera.y = 0f;
-        }
-
-        for(Unit c : m_coins.values()){
-            c.traceStart(m_player.getPosition(), 0.01f, Unit.TRACE_LINE);
-        }
-
-        for(Character c : m_characters.values()){
-            if(c instanceof Npc && ((Npc)c).getType() == Npc.BOMBER && c.checkCollide(m_player)){
-                m_player.damage(c.getPower());
-                if(c != m_boss)
-                    c.damage(Float.MAX_VALUE);
-            }
-        }
-
-        for(Bullet b : m_bullets1.values()){
-            if(b.getTeam() < 0){
-                if (b.checkCollide(m_player)) {
-                    m_player.damage(b.getPower());
-                    deleteUnit(b);
+                    m_accumPlayerUpdate = 0f;
                 }
             }
-            else {
-                for (Character c : m_characters.values()) {
-                    if (b.isEnemy(c) && b.checkCollide(c)) {
-                        c.damage(b.getPower());
+
+            m_camera.x += (m_player.getPosition().x - m_camera.x) * CAMERA_SPEED;
+            m_camera.y += (m_player.getPosition().y - m_camera.y) * CAMERA_SPEED;
+
+            if (Math.abs(m_camera.x) >= MAPMAX_X || Math.abs(m_camera.y) >= MAPMAX_Y) {
+                for (Unit u : m_units.values()) {
+                    Vec2 p = new Vec2(u.getPosition());
+                    p.x -= m_camera.x;
+                    p.y -= m_camera.y;
+                    u.setPosition(p);
+                }
+                m_camera.x = 0f;
+                m_camera.y = 0f;
+            }
+
+            for (Unit c : m_coins.values()) {
+                c.traceStart(m_player.getPosition(), 0.01f, Unit.TRACE_LINE);
+            }
+
+            for (Character c : m_characters.values()) {
+                if (c instanceof Npc && ((Npc) c).getType() == Npc.BOMBER && c.checkCollide(m_player)) {
+                    m_player.damage(c.getPower());
+                    if (c != m_boss)
+                        c.damage(Float.MAX_VALUE);
+                }
+            }
+
+            for (Bullet b : m_bullets1.values()) {
+                if (b.getTeam() < 0) {
+                    if (b.checkCollide(m_player)) {
+                        m_player.damage(b.getPower());
                         deleteUnit(b);
+                    }
+                } else {
+                    for (Character c : m_characters.values()) {
+                        if (b.isEnemy(c) && b.checkCollide(c)) {
+                            c.damage(b.getPower());
+                            deleteUnit(b);
+                        }
                     }
                 }
             }
-        }
 
-        for(Bullet b2 : m_bullets2.values()){
-            if(b2.getTeam() < 0){
-                if (b2.checkCollide(m_player))
-                    b2.damage(1);
-            }
-            else {
-                for (Character c : m_characters.values()) {
-                    if (b2.isEnemy(c) && b2.checkCollide(c))
-                        b2.damage(Float.MAX_VALUE);
+            for (Bullet b2 : m_bullets2.values()) {
+                if (b2.getTeam() < 0) {
+                    if (b2.checkCollide(m_player))
+                        b2.damage(1);
+                } else {
+                    for (Character c : m_characters.values()) {
+                        if (b2.isEnemy(c) && b2.checkCollide(c))
+                            b2.damage(Float.MAX_VALUE);
+                    }
+                }
+
+                for (Bullet b1 : m_bullets1.values()) {
+                    if (b1.isEnemy(b2) && b1.checkCollide(b2)) {
+                        b2.damage(1);
+                        deleteUnit(b1);
+                    }
+                }
+
+                for (Bullet b1 : m_bullets2.values()) {
+                    if (b1.isEnemy(b2) && b1.checkCollide(b2)) {
+                        b1.damage(1);
+                        b2.damage(1);
+                    }
                 }
             }
 
-            for(Bullet b1 : m_bullets1.values()){
-                if(b1.isEnemy(b2) && b1.checkCollide(b2)) {
-                    b2.damage(1);
-                    deleteUnit(b1);
-                }
+            m_accumMove.x += m_player.getPosition().x - m_playerPosPast.x;
+            m_accumMove.y += m_player.getPosition().y - m_playerPosPast.y;
+
+            if (Math.abs(m_accumMove.x) > m_distGenNpc || Math.abs(m_accumMove.y) > m_distGenNpc) {
+                addNpcGroup();
+                m_accumMove = new Vec2(0f, 0f);
             }
 
-            for(Bullet b1 : m_bullets2.values()){
-                if(b1.isEnemy(b2) && b1.checkCollide(b2)) {
-                    b1.damage(1);
-                    b2.damage(1);
-                }
+            for (Unit u : m_units.values()) {
+                if (u instanceof Player || u == m_boss)
+                    continue;
+
+                if (Math.abs(m_player.getPosition().x - u.getPosition().x) > 20f ||
+                        Math.abs(m_player.getPosition().y - u.getPosition().y) > 20f)
+                    deleteUnit(u);
             }
-        }
 
-        m_accumMove.x += m_player.getPosition().x - m_playerPosPast.x;
-        m_accumMove.y += m_player.getPosition().y - m_playerPosPast.y;
+            m_playerPosPast.x = m_player.getPosition().x;
+            m_playerPosPast.y = m_player.getPosition().y;
 
-        if(Math.abs(m_accumMove.x) > m_distGenNpc || Math.abs(m_accumMove.y) > m_distGenNpc){
-            addNpcGroup();
-            m_accumMove = new Vec2(0f, 0f);
-        }
-
-        for(Unit u : m_units.values()){
-            if(u instanceof Player || u == m_boss)
-                continue;
-
-            if(Math.abs(m_player.getPosition().x - u.getPosition().x) > 20f ||
-                    Math.abs(m_player.getPosition().y - u.getPosition().y) > 20f)
-                deleteUnit(u);
-        }
-
-        m_playerPosPast.x = m_player.getPosition().x;
-        m_playerPosPast.y = m_player.getPosition().y;
+        }catch(Exception e){}
 
         // ending
         setUpdating(false);

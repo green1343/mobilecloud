@@ -7,6 +7,8 @@ ADDED from C:\war\app\src\main\AndroidManifest.xml:1:1-37:12
 		INJECTED from C:\war\app\src\main\AndroidManifest.xml
 	android:versionName
 		ADDED from C:\war\app\src\main\AndroidManifest.xml:4:5-31
+		INJECTED from C:\war\app\src\main\AndroidManifest.xml
+		INJECTED from C:\war\app\src\main\AndroidManifest.xml
 	android:versionCode
 		ADDED from C:\war\app\src\main\AndroidManifest.xml:3:5-29
 		INJECTED from C:\war\app\src\main\AndroidManifest.xml
@@ -15,6 +17,7 @@ ADDED from C:\war\app\src\main\AndroidManifest.xml:1:1-37:12
 		ADDED from C:\war\app\src\main\AndroidManifest.xml:1:11-69
 uses-sdk
 ADDED from C:\war\app\src\main\AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:support-v4:21.0.3] C:\war\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\AndroidManifest.xml:15:5-42
 	android:targetSdkVersion
 		ADDED from C:\war\app\src\main\AndroidManifest.xml:8:9-38
 		INJECTED from C:\war\app\src\main\AndroidManifest.xml
@@ -25,6 +28,7 @@ ADDED from C:\war\app\src\main\AndroidManifest.xml:6:5-8:41
 		INJECTED from C:\war\app\src\main\AndroidManifest.xml
 application
 ADDED from C:\war\app\src\main\AndroidManifest.xml:10:5-31:19
+MERGED from [com.android.support:support-v4:21.0.3] C:\war\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\AndroidManifest.xml:16:5-19
 	android:label
 		ADDED from C:\war\app\src\main\AndroidManifest.xml:12:9-41
 	android:background
