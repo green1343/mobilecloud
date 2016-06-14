@@ -31,13 +31,13 @@ public enum User {
         m_mapMax = 0;
         m_ad = false;
 
-        //writeUserData();
+        writeUserData();
         readUserData();
 
         // debug
-        m_coin = 87000;
-        for(int i=0; i<11; ++i)
-            m_weaponLevel[i] = 3;
+        m_coin = 8700000;
+        //for(int i=0; i<11; ++i)
+        //    m_weaponLevel[i] = 3;
         m_mapMax = 30;
     }
 

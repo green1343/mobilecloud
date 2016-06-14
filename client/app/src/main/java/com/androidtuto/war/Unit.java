@@ -610,24 +610,30 @@ public class Unit implements Comparable
         // auto tracing for npc, guided missile
         if(m_bTrace)
         {
-            if(Vec2.checkSquare(m_position, m_dest, m_size.x)) {
+            float dist = m_size.x;
+            if(m_traceMode == TRACE_LINE)
+                dist = m_torque*delta;
+
+            if(Vec2.checkSquare(m_position, m_dest, dist)) {
                 if(m_callbackAniTrace != null)
                     m_callbackAniTrace.animationEnd(this);
                 traceStop();
             }
-            else if(m_traceMode == TRACE_LINE){
-                Vec2 d = new Vec2(m_dest.x - m_position.x, m_dest.y - m_position.y);
-                d.normalize();
+            else{
+                if(m_traceMode == TRACE_LINE){
+                    Vec2 d = new Vec2(m_dest.x - m_position.x, m_dest.y - m_position.y);
+                    d.normalize();
 
-                m_position.x += d.x * m_torque*delta;
-                m_position.y += d.y * m_torque*delta;
-            }
-            else {
-                int ccw1 = Vec2.ccw(m_position, Vec2.add(m_position, m_direction), m_dest);
-                m_direction.rotate(ccw1 * m_torque * delta);
-                int ccw2 = Vec2.ccw(m_position, Vec2.add(m_position, m_direction), m_dest);
-                if(ccw1 != ccw2)
-                    setDirection(new Vec2(m_dest.x - m_position.x, m_dest.y - m_position.y));
+                    m_position.x += d.x * m_torque*delta;
+                    m_position.y += d.y * m_torque*delta;
+                }
+                else {
+                    int ccw1 = Vec2.ccw(m_position, Vec2.add(m_position, m_direction), m_dest);
+                    m_direction.rotate(ccw1 * m_torque * delta);
+                    int ccw2 = Vec2.ccw(m_position, Vec2.add(m_position, m_direction), m_dest);
+                    if(ccw1 != ccw2)
+                        setDirection(new Vec2(m_dest.x - m_position.x, m_dest.y - m_position.y));
+                }
             }
         }
 

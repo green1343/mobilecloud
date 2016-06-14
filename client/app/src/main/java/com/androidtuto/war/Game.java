@@ -202,7 +202,7 @@ public enum Game {
                 coin = new Unit(u.getPosition().x + getRandomFloat(-2.5f, 2.5f), u.getPosition().y + getRandomFloat(-2.5f, 2.5f), 0.4f, 0.4f, 0f, R.drawable.coin, 10);
 
             coin.setZ(4);
-            coin.animatePicture(0.03f, true);
+            coin.animatePicture(0.04f, true);
 
             int index = Manager.INSTANCE.registerUnit(coin);
             m_units.put(index, coin);
@@ -1263,7 +1263,7 @@ public enum Game {
             }
 
             for (Unit c : m_coins.values()) {
-                c.traceStart(m_player.getPosition(), 0.01f, Unit.TRACE_LINE);
+                c.traceStart(m_player.getPosition(), 0.008f, Unit.TRACE_LINE);
             }
 
             for (Character c : m_characters.values()) {

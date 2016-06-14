@@ -8,12 +8,12 @@
         "source": "C:\\war\\app\\src\\main\\res\\drawable\\ui_tutorial.png"
     },
     {
-        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num5.png",
-        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num5.png"
-    },
-    {
         "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fx_explosion1_24.png",
         "source": "C:\\war\\app\\src\\main\\res\\drawable\\fx_explosion1_24.png"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\num5.png",
+        "source": "C:\\war\\app\\src\\main\\res\\drawable\\num5.png"
     },
     {
         "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\npc_bomber13.png",
