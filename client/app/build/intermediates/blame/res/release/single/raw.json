@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\release\\raw\\clear.mp3",
+        "source": "C:\\war\\app\\src\\main\\res\\raw\\clear.mp3"
+    },
+    {
+        "merged": "C:\\war\\app\\build\\intermediates\\res\\merged\\release\\raw\\click.wav",
+        "source": "C:\\war\\app\\src\\main\\res\\raw\\click.wav"
+    }
+]

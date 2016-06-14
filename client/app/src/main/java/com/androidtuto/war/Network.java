@@ -1,6 +1,6 @@
 package com.androidtuto.war;
 
-import com.androidtuto.packet.Packet_Command;
+import com.androidtuto.war.packet.Packet_Command;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,16 +1,16 @@
 package com.androidtuto.war;
 
-import com.androidtuto.packet.PACKET;
-import com.androidtuto.packet.Packet_Assign_ID;
-import com.androidtuto.packet.Packet_Command;
-import com.androidtuto.packet.Packet_PVP_Off;
-import com.androidtuto.packet.Packet_Player_Dead;
-import com.androidtuto.packet.Packet_Player_Fire_Off;
-import com.androidtuto.packet.Packet_Player_Fire_On;
-import com.androidtuto.packet.Packet_Player_Update;
-import com.androidtuto.packet.Packet_Player_Weapon;
-import com.androidtuto.packet.Packet_Room_Info;
-import com.androidtuto.packet.Packet_Room_Update;
+import com.androidtuto.war.packet.PACKET;
+import com.androidtuto.war.packet.Packet_Assign_ID;
+import com.androidtuto.war.packet.Packet_Command;
+import com.androidtuto.war.packet.Packet_PVP_Off;
+import com.androidtuto.war.packet.Packet_Player_Dead;
+import com.androidtuto.war.packet.Packet_Player_Fire_Off;
+import com.androidtuto.war.packet.Packet_Player_Fire_On;
+import com.androidtuto.war.packet.Packet_Player_Update;
+import com.androidtuto.war.packet.Packet_Player_Weapon;
+import com.androidtuto.war.packet.Packet_Room_Info;
+import com.androidtuto.war.packet.Packet_Room_Update;
 
 import java.io.IOException;
 import java.io.InputStream;

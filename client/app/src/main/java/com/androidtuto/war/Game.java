@@ -2,7 +2,7 @@ package com.androidtuto.war;
 
 import android.content.Context;
 
-import com.androidtuto.packet.Packet_Player_Update;
+import com.androidtuto.war.packet.Packet_Player_Update;
 
 import java.util.ArrayList;
 import java.util.HashMap;
